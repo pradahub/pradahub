@@ -331,8 +331,8 @@ PradaLib.Notify = function(self, options)
 end
 
 PradaLib.CreateWindow = function(self, options)
-    local WindowTitle = options.Title or 'na'
-    local TitlePrefix = options.Prefix or 'Ake'
+    local WindowTitle = options.Title or 'Da'
+    local TitlePrefix = options.Prefix or 'Pra'
     local defaultTheme = options.Theme or 'Minimal White'
     
     local ScreenGui = createInstance('ScreenGui', {
@@ -2607,8 +2607,8 @@ PradaLib.CreateWindow = function(self, options)
 end
 
 local Window = PradaLib:CreateWindow({
-    Title = 'na',
-    Prefix = 'Ake',
+    Title = 'Da',
+    Prefix = 'Pra',
     Theme = 'Minimal White'
 })
 
