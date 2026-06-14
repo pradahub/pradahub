@@ -1,7 +1,3 @@
--- // A truly sad story that this script got leaked,
--- // blame the RedstoneGuard developer for letting this happen.
-
-
 local UserInputService = game:GetService('UserInputService')
 local TweenService = game:GetService('TweenService')
 local RunService = game:GetService('RunService')
@@ -2607,9 +2603,9 @@ PradaLib.CreateWindow = function(self, options)
 end
 
 local Window = PradaLib:CreateWindow({
-    Title = 'Da',
+    Title = 'daHub',
     Prefix = 'Pra',
-    Theme = 'Minimal White'
+    Theme = 'Catppuccin'
 })
 
 local ThrowingTab = Window:CreateTab({ Name = 'QB Aimbot', Icon = 'rbxassetid://6034684949' })
