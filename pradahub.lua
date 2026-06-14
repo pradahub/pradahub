@@ -568,7 +568,7 @@ PradaLib.CreateWindow = function(self, options)
             Font = Enum.Font.GothamBold,
             TextColor3 = Color3.fromRGB(255, 255, 255),
             TextSize = 14,
-            Text = '<i>AKE</i>'
+            Text = '<i>PRA</i>'
         })
         regTheme(TogText, function() TogText.TextColor3 = Theme.TextMain end)
 
