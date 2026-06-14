@@ -5222,10 +5222,13 @@ workspace.ChildAdded:Connect(function(v)
     if not jumpSpot.Value then return end
     if not v:IsA('BasePart') or v.Name ~= 'Football' then return end
 
-    task.wait()
+       local waited = 0
+    repeat task.wait() waited += 1
+    until v.AssemblyLinearVelocity.Magnitude > 1 or waited > 10
+    if v.AssemblyLinearVelocity.Magnitude < 1 then return end
 
-    local position = v.Position
-    local velocity = v.AssemblyLinearVelocity
+    local pos = v.Position
+    local vel = v.AssemblyLinearVelocity
     local gravity = Vector3.new(0, -28, 0)
     local deltaTime = 1 / 30
 
@@ -5236,13 +5239,13 @@ workspace.ChildAdded:Connect(function(v)
     raycastParams.FilterDescendantsInstances = {v}
     raycastParams.IgnoreWater = true
 
-    for _ = 1, 300 do
-        local nextPosition = position + velocity * deltaTime + 0.5 * gravity * deltaTime ^ 2
-        velocity += gravity * deltaTime
+  for _ = 1, 300 do
+        local nextPosition = pos + vel * deltaTime + 0.5 * gravity * deltaTime ^ 2
+        vel += gravity * deltaTime
 
-        if velocity.Y < 0 then
-            local direction = nextPosition - position
-            local result = workspace:Raycast(position, direction + Vector3.new(0, -14.4, 0), raycastParams)
+        if vel.Y < 0 then
+            local direction = nextPosition - pos
+            local result = workspace:Raycast(pos, direction + Vector3.new(0, -14.4, 0), raycastParams)
 
             if result then
                 nextPosition = result.Position
@@ -5252,7 +5255,7 @@ workspace.ChildAdded:Connect(function(v)
         end
 
         table.insert(positions, nextPosition)
-        position = nextPosition
+        pos = nextPosition
     end
 
     local optimalPoint = positions[#positions]
@@ -5380,10 +5383,13 @@ end)
         if not throwSpot.Value then return end
     if not v:IsA('BasePart') or v.Name ~= 'Football' then return end
 
-    task.wait()
+   local waited = 0
+    repeat task.wait() waited += 1
+    until v.AssemblyLinearVelocity.Magnitude > 1 or waited > 10
+    if v.AssemblyLinearVelocity.Magnitude < 1 then return end
 
-    local pos = v.Position
-    local vel = v.AssemblyLinearVelocity
+    local position = v.Position
+    local velocity = v.AssemblyLinearVelocity
     local gravity = Vector3.new(0, -28, 0)
 
     local positions = {}
@@ -5400,7 +5406,7 @@ end)
 
         table.insert(positions, projectilePos)
 
-        if projectilePos.Y < spawnY then
+        if projectilePos.Y < spawnY - 5 then
             break
         end
 
